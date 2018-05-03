@@ -2,17 +2,11 @@ var date = new Date();
 var hour = date.getHours();
 var minute = date.getMinutes();
 var second = date.getSeconds();
-var time = hour + ':' + minute + ':' + second;
-if (hour < 10) {
-    time = '0' + hour + ':' + minute + ':' + second;
-}
-if (minute < 10) {
-    time = hour + ':0' + minute + ':' + second;
-}
-if (second < 10) {
-    time = hour + ':' + minute + ':0' + second;
-}
-document.getElementById('time').setAttribute('value', time);
+var time = ((hour < 10) ? ('0' + hour) : hour) +
+    ':' + ((minute < 10) ? ('0' + minute) : minute) +
+    ':' + ((second < 10) ? ('0' + second) : second);
+$('.time').attr('value', time);
+
 //绑定输入框点击事件，动态加载时间选择器
 $('.time').on('click', function () {
     /**
@@ -27,15 +21,16 @@ $('.time').on('click', function () {
         picker.className = "picker";
         picker.innerHTML = "<div class='picker'><table rules=rows><tr><td><span class ='prev-hour'></span></td><td>" +
             "<span class = 'prev-minute'> </span></td><td><span class = 'prev-second'></span></td></tr>" +
-            "<tr class='prev-time'><td></td><td></td><td></td></tr>" + "<tr class='current-time'><td></td><td></td><td></td></tr>" +
-            "<tr class='next-time'><td></td><td></td><td></td></tr>" + "<tr><td><span class='next-hour'></span></td>" +
+            "<tr class='prev-time'><td></td><td></td><td></td></tr>" +
+            "<tr class='current-time'><td></td><td></td><td></td></tr>" +
+            "<tr class='next-time'><td></td><td></td><td></td></tr>" +
+            "<tr><td><span class='next-hour'></span></td>" +
             "<td><span class='next-minute'></span></td><td><span class='next-second'></span></td></tr></table>" +
             "<button class='yes'>确定</button><button class='no'>取消</button></div>"
         timePicker.appendChild(picker);
     }
 
     showTimePicker();
-
 })
 /**
  * 显示数据
@@ -138,7 +133,9 @@ $('.time-picker').on('click', '.next-second', function () {
     showTimePicker();
 })
 $('.time-picker').on('click', '.yes', function () {
-    var currentTime = $('.current-time').find('td:eq(0)').text() + ':' + $('.current-time').find('td:eq(1)').text() + ':' + $('.current-time').find('td:eq(2)').text();
+    var currentTime = $('.current-time').find('td:eq(0)').text() +
+        ':' + $('.current-time').find('td:eq(1)').text() +
+        ':' + $('.current-time').find('td:eq(2)').text();
     console.log(currentTime);
     document.getElementById('time').setAttribute('value', currentTime);
     $('.picker').css('display', 'none');
