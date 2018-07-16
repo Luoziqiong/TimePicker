@@ -30,7 +30,7 @@
     position: absolute;
     top: 30px;
     left: 280px;
-    box-shadow: 2px 3px 10px 0px #dadada;
+    box-shadow: 2px 3px 10px 0px rgb(218, 218, 218);
 }
 
 table {
@@ -52,7 +52,7 @@ table {
     border-left: 6px solid transparent;
     border-top: 0px;
     border-right: 6px solid transparent;
-    border-bottom: 8px solid #999;
+    border-bottom: 8px solid rgb(153,9,0);
     cursor: pointer;
 }
 
@@ -64,7 +64,7 @@ table {
     width: 0px;
     height: 0px;
     border-left: 6px solid transparent;
-    border-top: 8px solid #999;
+    border-top: 8px solid rgb(153,9,0);
     border-right: 6px solid transparent;
     border-bottom: 0px;
     cursor: pointer;
